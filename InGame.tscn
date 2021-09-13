@@ -11,7 +11,7 @@
 [ext_resource path="res://img/baloon_pop2.fw.png" type="Texture" id=9]
 [ext_resource path="res://Comic Gibi Bold.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://PlayerBalloon.gd" type="Script" id=11]
-[ext_resource path="res://audio/boom.ogg" type="AudioStream" id=12]
+[ext_resource path="res://audio/boom.tres" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

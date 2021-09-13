@@ -21,12 +21,13 @@ func _process(delta):
 
 	# if out of bounds
 	if n.position.y <= -120:
-#		if soundPlayer.playing == false:
-#			soundPlayer.play()
+		#if soundPlayer.playing == false:
+		soundPlayer.play()
 		Reset()
 
 func Reset():
-	soundPlayer.stop()
+#	if soundPlayer.playing == true:
+#		soundPlayer.stop()
 
 	var n = get_node(".")
 	n.stop()

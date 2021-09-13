@@ -20,9 +20,11 @@ func _process(delta):
 	n.position = n.position.move_toward(Vector2(n.position.x, -120), delta * 120)
 
 	# if out of bounds
-	if n.position.y <= -120:
-		soundPlayer.play()
-		Reset()
+	if n.position.y <= 73:
+		get_node(".").play(currentColor)
+		soundPlayer.play(0)
+#		soundPlayer.play()
+#		Reset()
 
 func Reset():
 	var n = get_node(".")

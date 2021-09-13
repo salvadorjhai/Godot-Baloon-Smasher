@@ -115,5 +115,6 @@ volume_db = -10.0
 [node name="musicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -15.0
+
 [connection signal="pressed" from="CenterContainer/bgMusicOnOff/btnMusicOnOff" to="." method="_on_btnMusicOnOff_pressed"]
 [connection signal="animation_finished" from="PlayerBalloon" to="PlayerBalloon" method="_on_PlayerBalloon_animation_finished"]

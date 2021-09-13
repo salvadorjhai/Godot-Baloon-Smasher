@@ -114,5 +114,6 @@ texture = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer/AnimatedSpriteBaloon" to="." method="_on_AnimatedSpriteBaloon_animation_finished"]

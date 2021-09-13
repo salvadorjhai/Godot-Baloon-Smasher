@@ -18,6 +18,10 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func _input(event):
+	if event is InputEventKey and event.is_pressed():
+		if event.scancode == KEY_ESCAPE:
+			get_tree().change_scene("res://StartMenu.tscn")
 
 func _on_btnMusicOnOff_pressed():
 	if is_on == true:

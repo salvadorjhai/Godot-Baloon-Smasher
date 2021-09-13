@@ -52,4 +52,5 @@ volume_db = -15.146
 
 [node name="menuSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+
 [connection signal="pressed" from="play_buttonfw/btnPlay" to="." method="_on_btnPlay_pressed"]

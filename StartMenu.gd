@@ -16,7 +16,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
+func _input(event):
+	if event is InputEventKey and event.is_pressed():
+		if event.scancode == KEY_ENTER:
+			 _on_btnPlay_pressed()
+		if event.scancode == KEY_ESCAPE:
+			get_tree().quit()
 
 func _on_btnPlay_pressed():
 	get_node("menuSound").play()

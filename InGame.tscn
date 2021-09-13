@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://img/bg.png" type="Texture" id=1]
+[ext_resource path="res://img/bgBorderBottom.png" type="Texture" id=2]
+[ext_resource path="res://img/bgBorderTop.png" type="Texture" id=3]
+[ext_resource path="res://img/baloon_green.fw.png" type="Texture" id=4]
+[ext_resource path="res://img/baloon_orange.fw.png" type="Texture" id=5]
+[ext_resource path="res://img/baloon_blue.fw.png" type="Texture" id=6]
+[ext_resource path="res://img/baloon_pop1.fw.png" type="Texture" id=7]
+[ext_resource path="res://img/baloon_pop3.fw.png" type="Texture" id=8]
+[ext_resource path="res://img/baloon_pop2.fw.png" type="Texture" id=9]
+[ext_resource path="res://Comic Gibi Bold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://PlayerBalloon.gd" type="Script" id=11]
+[ext_resource path="res://audio/boom.ogg" type="AudioStream" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "blue",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "green",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "orange",
+"speed": 10.0
+} ]
+
+[sub_resource type="DynamicFont" id=2]
+size = 82
+use_filter = true
+extra_spacing_bottom = 15
+font_data = ExtResource( 10 )
+
+[node name="InGame" type="Node2D"]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 480.0
+margin_bottom = 800.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="Sprite" parent="CenterContainer"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="bgBorderTop" type="Sprite" parent="CenterContainer"]
+z_index = 1
+texture = ExtResource( 3 )
+centered = false
+
+[node name="bgBorderBottom" type="Sprite" parent="CenterContainer"]
+position = Vector2( 0, 727 )
+z_index = 1
+texture = ExtResource( 2 )
+centered = false
+
+[node name="PlayerBalloon" type="AnimatedSprite" parent="."]
+position = Vector2( 305.86, 140.269 )
+frames = SubResource( 1 )
+animation = "green"
+centered = false
+script = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="PlayerBalloon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_bottom = -7.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerBalloon"]
+stream = ExtResource( 12 )
+[connection signal="animation_finished" from="PlayerBalloon" to="PlayerBalloon" method="_on_PlayerBalloon_animation_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://img/bg.png" type="Texture" id=1]
 [ext_resource path="res://img/bgBorderBottom.png" type="Texture" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://Comic Gibi Bold.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://PlayerBalloon.gd" type="Script" id=11]
 [ext_resource path="res://audio/boom.tres" type="AudioStream" id=12]
+[ext_resource path="res://audio/menu.ogg" type="AudioStream" id=13]
+[ext_resource path="res://InGame.gd" type="Script" id=14]
+[ext_resource path="res://img/music_on.fw.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -38,6 +41,7 @@ extra_spacing_bottom = 15
 font_data = ExtResource( 10 )
 
 [node name="InGame" type="Node2D"]
+script = ExtResource( 14 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -63,6 +67,25 @@ z_index = 1
 texture = ExtResource( 2 )
 centered = false
 
+[node name="bgMusicOnOff" type="Sprite" parent="CenterContainer"]
+position = Vector2( 441.72, 762.318 )
+z_index = 2
+texture = ExtResource( 15 )
+
+[node name="btnMusicOnOff" type="Button" parent="CenterContainer/bgMusicOnOff"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -29.5
+margin_top = -31.0
+margin_right = -29.5
+margin_bottom = -31.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PlayerBalloon" type="AnimatedSprite" parent="."]
 position = Vector2( 305.86, 140.269 )
 frames = SubResource( 1 )
@@ -87,4 +110,10 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerBalloon"]
 stream = ExtResource( 12 )
+volume_db = -10.0
+
+[node name="musicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -15.0
+[connection signal="pressed" from="CenterContainer/bgMusicOnOff/btnMusicOnOff" to="." method="_on_btnMusicOnOff_pressed"]
 [connection signal="animation_finished" from="PlayerBalloon" to="PlayerBalloon" method="_on_PlayerBalloon_animation_finished"]

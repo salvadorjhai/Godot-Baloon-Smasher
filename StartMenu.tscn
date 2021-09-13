@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://img/bg.png" type="Texture" id=1]
 [ext_resource path="res://img/bgBorderBottom.png" type="Texture" id=2]
 [ext_resource path="res://img/bgBorderTop.png" type="Texture" id=3]
 [ext_resource path="res://img/play_button.fw.png" type="Texture" id=4]
 [ext_resource path="res://StartMenu.gd" type="Script" id=5]
+[ext_resource path="res://audio/eat.tres" type="AudioStream" id=6]
 
 [node name="StartMenu" type="CenterContainer"]
 anchor_right = 1.0
@@ -47,4 +48,8 @@ position = Vector2( 240, 764 )
 texture = ExtResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.146
+
+[node name="menuSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 [connection signal="pressed" from="play_buttonfw/btnPlay" to="." method="_on_btnPlay_pressed"]

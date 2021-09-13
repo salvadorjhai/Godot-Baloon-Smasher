@@ -21,14 +21,10 @@ func _process(delta):
 
 	# if out of bounds
 	if n.position.y <= -120:
-		#if soundPlayer.playing == false:
 		soundPlayer.play()
 		Reset()
 
 func Reset():
-#	if soundPlayer.playing == true:
-#		soundPlayer.stop()
-
 	var n = get_node(".")
 	n.stop()
 	n.frame = 0
@@ -44,9 +40,6 @@ func _input(event):
 		if char(event.scancode) == CurrentLetter:
 			get_node(".").play(currentColor)
 			soundPlayer.play(0)
-			# TODO:
-			# reset, explode
-			#Reset()
 
 func _on_PlayerBalloon_animation_finished():
 	Reset()

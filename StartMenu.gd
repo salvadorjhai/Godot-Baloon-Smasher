@@ -19,4 +19,5 @@ func _ready():
 
 
 func _on_btnPlay_pressed():
+	get_node("menuSound").play()
 	get_tree().change_scene("res://InGame.tscn")

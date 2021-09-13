@@ -8,5 +8,5 @@ task:
 - improve start ui
 - add score
 - add more effect like peppa pig popping out of screen (lol)
-- add game over overlay
+- add gameover overlay
 

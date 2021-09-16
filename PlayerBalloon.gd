@@ -4,12 +4,15 @@ var CurrentLetter = "A"
 var currentColor = "orange"
 
 var keys = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-var colors = ["orange", "blue", "green"]
+var colors = ["orange", "blue", "green", "red"]
 
 onready var soundPlayer = 	get_node("AudioStreamPlayer")
 
+onready var rnd = RandomNumberGenerator.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rnd.randomize()
 	Reset()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,9 +23,10 @@ func _process(delta):
 	n.position = n.position.move_toward(Vector2(n.position.x, -120), delta * 120)
 
 	# if out of bounds
-	if n.position.y <= 73:
-		get_node(".").play(currentColor)
+	if n.position.y <= 40:
+		islocked = true
 		soundPlayer.play(0)
+		get_node(".").play()
 #		soundPlayer.play()
 #		Reset()
 
@@ -31,17 +35,21 @@ func Reset():
 	n.stop()
 	n.frame = 0
 		
-	n.position = Vector2(rand_range(89, 391), 727)
+	n.position = Vector2(rnd.randf_range(8, 712), 568)
 	n.animation = currentColor
 
-	CurrentLetter = keys[rand_range(1, 26)]
-	currentColor = colors[rand_range(1,3)]	
+	CurrentLetter = keys[rnd.randi_range(1, 26) - 1]
+	currentColor = colors[rnd.randi_range(1, 4) - 1]	
 
+var islocked = false
 func _input(event):
-	if event is InputEventKey and event.pressed:
+	if event is InputEventKey and event.pressed and islocked == false:
 		if char(event.scancode) == CurrentLetter:
-			get_node(".").play(currentColor)
+			islocked = true
+			get_parent().SCORE = get_parent().SCORE + 1
+			get_node(".").play()
 			soundPlayer.play(0)
 
 func _on_PlayerBalloon_animation_finished():
 	Reset()
+	islocked = false

@@ -18,12 +18,20 @@ __meta__ = {
 }
 
 [node name="bg" type="Sprite" parent="."]
+scale = Vector2( 1.66667, 0.75 )
 texture = ExtResource( 1 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="play_buttonfw" type="Sprite" parent="."]
-position = Vector2( 242.415, 378.194 )
+position = Vector2( 398.322, 292.298 )
+scale = Vector2( 0.650149, 0.565561 )
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="btnPlay" type="Button" parent="play_buttonfw"]
 anchor_right = 1.0
@@ -40,12 +48,20 @@ __meta__ = {
 }
 
 [node name="bgBorderTop" type="Sprite" parent="."]
-position = Vector2( 240, 36 )
+position = Vector2( 399.5, 18 )
+scale = Vector2( 1.662, 0.5 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="bgBorderBottom" type="Sprite" parent="."]
-position = Vector2( 240, 764 )
+position = Vector2( 399.5, 582.048 )
+scale = Vector2( 1.662, 0.5 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -15.146
